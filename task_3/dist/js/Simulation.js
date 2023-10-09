@@ -40,7 +40,7 @@ class Simulation {
             stat.log(rndWinAmount, rndHitCount);
         }
     }
-    // Stat -> Statistics
+    // MergeableStat -> StatCl
     static mergeStats(createStatFn, stats) {
         const resStat = createStatFn();
         for (const stat of stats) {
@@ -53,6 +53,7 @@ class Simulation {
         const expectedZerosHitCount = (Simulation.logIterationCount / 2) * Simulation.statsToTestCount;
         Simulation.testSingleWin(stat, 0, expectedZerosHitCount);
         const winAmountSmallestIncl = 1;
+        // changed from 0.1 to 1/10 to avoid .0000000002 and similar
         const smallestWinAmountStep = 1 / 10;
         const winAmountBiggestIncl = 4;
         // Test all values in the middle.

@@ -1,9 +1,9 @@
 import { LoggableStat } from './LoggableStat';
-//import { MergeableStat } from './MergeableStat';
 import { TestableStat } from './TestableStat';
 import { Stat } from './Stat'
-import { Statistics } from './Statistics';
+//import { StatCl } from './StatCl';
 import { CreateStatFn } from './CreateStatFn';
+import { MergeableStat } from './MergeableStat';
 
 export class Simulation {
     private static readonly logIterationCount = 50000 
@@ -64,9 +64,9 @@ export class Simulation {
         }
     }
 
-    // Stat -> Statistics
+    // MergeableStat -> StatCl
     private static mergeStats(createStatFn: CreateStatFn, 
-                                    stats: Statistics[]): Stat {
+                                    stats: MergeableStat[]): Stat {
         const resStat = createStatFn();
         for (const stat of stats) {
             resStat.merge(stat);
@@ -82,7 +82,9 @@ export class Simulation {
         Simulation.testSingleWin(stat, 0, expectedZerosHitCount);
 
         const winAmountSmallestIncl = 1;
-        const smallestWinAmountStep = 1/10;
+
+        // changed from 0.1 to 1/10 to avoid .0000000002 and similar
+        const smallestWinAmountStep = 1/10; 
         const winAmountBiggestIncl = 4;
 
         // Test all values in the middle.

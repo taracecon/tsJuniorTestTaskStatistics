@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Simulation_1 = require("./Simulation");
-const Statistics_1 = require("./Statistics");
+const StatCl_1 = require("./StatCl");
 let createStatFn = () => {
-    return new Statistics_1.Statistics();
+    return new StatCl_1.StatCl();
 };
 Simulation_1.Simulation.runSimulation(createStatFn);
-// Simulation.runSimulation( () => { return new Statistics() } );

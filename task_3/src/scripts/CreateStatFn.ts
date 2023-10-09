@@ -1,3 +1,4 @@
-import { Statistics } from './Statistics';
+//import { StatCl } from './StatCl';
+import { Stat } from './Stat';
 
-export type CreateStatFn = () => Statistics;
+export type CreateStatFn = () => Stat;
